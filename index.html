@@ -2054,7 +2054,8 @@ function renderPerf(m){
     const projRev = a.revenue + dailyAvgB * daysLeft;
     const {bonus: projBonus, pct: projPct} = calcBonus(projRev, a.target);
     const projBc = bonusColor(projPct);
-    bonusHtml += '<div style="background:#fff;border-radius:12px;padding:12px;border:1px solid '+bc+'44;box-shadow:0 1px 4px rgba(0,0,0,.05)">';
+    const agColor2 = {'郭品君':'#00B894','洪欣伶':'#00CEC9','傅雅筠':'#FDCB6E','楊凱涵':'#6C5CE7','黃于倢':'#FD79A8','李培榕':'#fab1d3'}[a.name]||'#6C5CE7';
+    bonusHtml += '<div style="background:linear-gradient(135deg,'+agColor2+'12,#fff);border-radius:12px;padding:12px;border:1px solid '+agColor2+'33;box-shadow:0 2px 8px '+agColor2+'15">';
     bonusHtml += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">';
     bonusHtml += '<span style="font-size:17px;font-weight:700;color:#2d3436">'+a.name+'</span>';
     bonusHtml += '<span style="font-size:17px;font-weight:700;background:'+bc+'18;color:'+bc+';padding:2px 7px;border-radius:8px">'+bl+'</span></div>';
@@ -2068,7 +2069,7 @@ function renderPerf(m){
     bonusHtml += '<div style="border-top:1px dashed #f0f0f5;padding-top:6px">';
     bonusHtml += '<div style="font-size:17px;color:#b2bec3;margin-bottom:2px">🔮 照此節奏月底預估</div>';
     bonusHtml += '<div style="font-size:17px;font-weight:700;color:'+projBc+'">$'+projBonus.toLocaleString()+'</div>';
-    bonusHtml += '<div style="font-size:17px;color:#b2bec3">'+(projPct*100)+'% 檔</div>';
+    bonusHtml += '<div style="font-size:17px;color:#b2bec3">'+parseFloat((projPct*100).toFixed(2))+'% 檔</div>';
     bonusHtml += '</div></div>';
   });
   bonusHtml += '</div>';
@@ -2815,8 +2816,8 @@ function renderAnnualContent(i){
     +'<div style="font-size:17px;color:#b2bec3">到職日 '+d.hireDate+' · 在職 <b style="color:'+pc+'">'+tenure+'</b></div>'
     +'</div>'
     +'<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:8px;text-align:center">'
-    +'<div style="background:rgba(255,255,255,.7);border-radius:10px;padding:8px 12px"><div style="font-size:17px;font-weight:900;color:'+pc+'">'+(ag?Math.round(ag.achieve*100)+'%':'—')+'</div><div style="font-size:17px;color:#b2bec3">5月達成率</div></div>'
-    +'<div style="background:rgba(255,255,255,.7);border-radius:10px;padding:8px 12px"><div style="font-size:17px;font-weight:900;color:'+pc+'">'+(cag?cag.validRate+'%':'—')+'</div><div style="font-size:17px;color:#b2bec3">5月有效率</div></div>'
+    +'<div style="background:rgba(255,255,255,.7);border-radius:10px;padding:8px 12px"><div style="font-size:17px;font-weight:900;color:'+pc+'">'+(ag?Math.round(ag.achieve*100)+'%':'—')+'</div><div style="font-size:17px;color:#b2bec3">'+curMonthLabel+'達成率</div></div>'
+    +'<div style="background:rgba(255,255,255,.7);border-radius:10px;padding:8px 12px"><div style="font-size:17px;font-weight:900;color:'+pc+'">'+(cag?cag.validRate+'%':'—')+'</div><div style="font-size:17px;color:#b2bec3">'+curMonthLabel+'有效率</div></div>'
     +'</div>'
     +'</div>';
 
